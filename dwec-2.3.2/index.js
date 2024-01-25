@@ -2,7 +2,7 @@ window.addEventListener("load",iniciar);
 
 function iniciar(){
     //Creamos el objeto XHR
-    miXHR = new XMLHttpRequest();
+    let miXHR = new XMLHttpRequest();
 
     //Sí el objeto XHR se crea correctamente:
     if (miXHR) {
