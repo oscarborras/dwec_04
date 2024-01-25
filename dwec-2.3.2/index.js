@@ -1,4 +1,4 @@
-window.addEventListener("load",iniciar);
+window.addEventListener("load",iniciar,false);
 
 function iniciar(){
     //Creamos el objeto XHR
