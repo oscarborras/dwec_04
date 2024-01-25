@@ -1,0 +1,5 @@
+CREATE USER 'ajax' IDENTIFIED BY 'dbpass';
+
+GRANT ALL PRIVILEGES ON `ajax` . * TO 'ajax';
+
+FLUSH PRIVILEGES;

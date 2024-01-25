@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Jquery - método ajax con JSON.</title>
+    <script src="jquery-3.2.1.min.js"></script>
+    <script>
+        $(function () {
+            $("button").click(function () { // Se se pulsa el boton
+                var cadena = "";
+
+                $("#cambia").html("<img src='ajax-loader.gif'>"); // Mientras se carga
+
+                // El método ajax recibe un objeto literal
+                $.ajax({
+                    url: "ajaxpelis.json",
+                    data: { edadrecomendad: 16},  // No hace falta para este ejemplo
+                    type: "GET",      // No hace falta para este ejemplo
+                    dataType: "json",
+                    // Si se produce correctamente
+                    success: function (datos_devueltos) {
+                        $("#cambia").html("<br />");
+                        for (var i = 0; i < datos_devueltos.length; i++) {
+                            $("#cambia").append("Título:" + datos_devueltos[i].titulo + "<br />" + "Genero:" + datos_devueltos[i].genero + "<br />");
+                        }
+                    },
+                    // Si la petición falla
+                    error: function (xhr, estado, error_producido) {
+                        console.log("Error producido: " + error_producido);
+                        console.log("Estado: " + estado);
+                    },
+
+                    //Tanto si falla como si funciona como sino funciona.
+                    complete: function (xhr, estado) {
+                        console.log("Petición completa");
+                    }
+                });
+            });
+        });
+    </script>
+
+</head>
+
+<body>
+    <button type="button">JQuery Ajax JSON.</button>
+    <div id="cambia">
+        <h2>Cambia el contenido</h2>
+    </div>
+</body>
+
+</html>
+
